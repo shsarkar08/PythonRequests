@@ -13,8 +13,8 @@ class Response:
 
 
 class APIRequest:
-    def get(self, url):
-        response = requests.get(url)
+    def get(self, url, params):
+        response = requests.get(url, params=params)
         return self.__api_response(response)
 
     def post(self, url, payload, headers):
