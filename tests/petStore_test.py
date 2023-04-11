@@ -8,19 +8,6 @@ from utils.readProperties import ReadConfig
 baseURI = ReadConfig.getBaseURI()
 
 
-def get_pet_by_id_operation(base_uri, pet_id):
-    res = requests.get(f'{base_uri}/pet/{pet_id}')
-    return res
-
-
-def get_pet_by_status_operation(base_uri, status):
-    params = {
-        'status': status
-    }
-    res = requests.get(f'{base_uri}/pet/findByStatus', params=params)
-    return res
-
-
 def create_new_pet_operation(base_uri):
     animal_name = f'Pet {str(uuid4())}'
     rand_id = random.randrange(99, 9999)
@@ -33,7 +20,8 @@ def create_new_pet_operation(base_uri):
         "status": "available"
     })
     headers = {
-        'Content-Type': 'application/json'
+         'Content-type': 'application/json',
+         'Accept': 'application/json'
     }
 
     res = requests.post(f'{base_uri}/pet', data=payload, headers=headers)
@@ -41,20 +29,6 @@ def create_new_pet_operation(base_uri):
 
 
 class TestPetStoreAPIs:
-    def test_get_by_pet_id(self):
-        resp = get_pet_by_id_operation(baseURI, 15)
-        json_resp = resp.json()
-        print(resp.url)
-        print(f'Op Status: {resp.status_code}')
-        if resp.status_code == 200:
-            print(f"ID: {json_resp['id']}, Name: {json_resp['name']}")
-
-    def test_get_by_status(self):
-        resp = get_pet_by_status_operation(baseURI, 'available')
-        json_resp = resp.json()
-        print(resp.url)
-        print(f'Op Status: {resp.status_code}')
-        print(f'Total records: {len(json_resp)}')
 
     def test_create_new_pet(self):
 
