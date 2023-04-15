@@ -1,0 +1,9 @@
+{
+  "id": 5,
+  "name": "pet_doggie_new",
+  "photoUrls": [
+    "https://testphotourl.com"
+  ],
+  "tags": [],
+  "status": "available"
+}
