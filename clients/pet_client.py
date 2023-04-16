@@ -16,14 +16,14 @@ class PetClient(BaseClient):
 
     def read_pet_by_id(self, pet_id):
         url = f'{self.base_url}/pet/{pet_id}'
-        return self.request.get(url, params=None)
+        return self.request.get(url)
 
     def read_pet_by_status(self, pet_status):
         url = f'{self.base_url}/pet/findByStatus'
         params = {
             'status': pet_status
         }
-        return self.request.get(url, params=params)
+        return self.request.get(url, params)
 
     def create_new_pet(self, body=None):
         response = self.__create_pet_with_unique_name_id(body)
@@ -54,6 +54,6 @@ class PetClient(BaseClient):
 #     client = PetClient()
 #
 #     def test_get_pet_by_status(self):
-#         resp = self.client.create_new_pet()
-#         print(resp.url)
+#         resp = self.client.read_pet_by_id(11)
+#         print(f'{resp.url} => {resp.status_code}')
 #         print(resp.as_dict)
