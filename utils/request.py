@@ -13,9 +13,13 @@ class Response:
 
 
 class APIRequest:
-    def get(self, url, params):
-        response = requests.get(url, params=params)
-        return self.__api_response(response)
+    def get(self, url, params=None):
+        if params is None:
+            response = requests.get(url)
+            return self.__api_response(response)
+        else:
+            response = requests.get(url, params=params)
+            return self.__api_response(response)
 
     def post(self, url, payload, headers):
         response = requests.post(url, data=payload, headers=headers)
