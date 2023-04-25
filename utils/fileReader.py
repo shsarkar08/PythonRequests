@@ -1,6 +1,9 @@
 import json
 from pathlib import Path
 
+'''
+Remove 'tests' in BASE_PATH if running the tests locally from tests/*_test.py file
+'''
 BASE_PATH = Path.cwd().joinpath('tests', 'data')
 
 
