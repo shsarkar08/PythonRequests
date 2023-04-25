@@ -48,12 +48,3 @@ class PetClient(BaseClient):
     def delete_pet(self, pet_id):
         url = f'{self.base_url}/pet/{pet_id}'
         return self.request.delete(url)
-
-
-# class TestAPI:
-#     client = PetClient()
-#
-#     def test_get_pet_by_status(self):
-#         resp = self.client.read_pet_by_id(11)
-#         print(f'{resp.url} => {resp.status_code}')
-#         print(resp.as_dict)
